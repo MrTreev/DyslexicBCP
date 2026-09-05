@@ -3,8 +3,8 @@
 bindingoffset=10mm,%having an inner margin offset prevents text falling into the gutter
 inner=20mm,
 outer=20mm,
-top=40mm,
-bottom=40mm,
+top=20mm,
+bottom=20mm,
 twoside,
 heightrounded]{geometry}
 
@@ -223,7 +223,7 @@ heightrounded]{geometry}
 
 %Drop Caps (And specifies a specific folder for normal lettrine images):
 \usepackage{lettrine}
-\newcommand{\lett}[2]{\lettrine[image=true,realheight=true,lines=3]{dropcaps/#1.png}{{\lowercase{#2}}}}
+\newcommand{\lett}[2]{\lettrine[image=true,realheight=true,lines=2]{dropcaps/#1.png}{{\lowercase{#2}}}}
 
 %If no second or third lines, and line amount might be doubtful, then this is used to ensure adequate spacing.
 \newcommand{\lettspace}[0]{\ifnum\prevgraf=1
