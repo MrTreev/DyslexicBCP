@@ -1,0 +1,6 @@
+\defaultfontfeatures[OpenDyslexic3]{
+    Extension = .ttf,
+    Path = resources/fonts/,
+    UprightFont = *-Regular,
+    BoldFont = *-Bold,
+}

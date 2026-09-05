@@ -5,5 +5,5 @@ all: BCP.pdf
 clean:
 	rm -f BCP.aux BCP.fdb_latexmk BCP.fls BCP.log BCP.pdf
 
-BCP.pdf: BCP.tex $(wildcard pages/*.tex)
+BCP.pdf: BCP.tex $(wildcard pages/*.tex) OpenDyslexic3.fontspec
 	Rscript build.r
