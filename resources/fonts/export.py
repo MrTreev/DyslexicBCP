@@ -10,4 +10,5 @@ export_chars = {"A", "AE", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
 os.makedirs(outdir, exist_ok=True)
 for glyph in font:
     if font[glyph].glyphname in export_chars:
-        font[glyph].export(outdir + "/" + font[glyph].glyphname + ".png")
+        outfile = f"{outdir}/{font[glyph].glyphname}.png"
+        font[glyph].export(outfile, pixelsize=500)
