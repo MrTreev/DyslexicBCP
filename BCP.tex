@@ -1,10 +1,11 @@
 \documentclass[8pt]{book}
-\usepackage[a4paper,%This enables easy large-letter editions (A4)
-bindingoffset=10mm,%having an inner margin offset prevents text falling into the gutter
+\usepackage[a4paper,
+bindingoffset=10mm,
 inner=20mm,
 outer=20mm,
 top=20mm,
 bottom=20mm,
+headheight=15pt,
 twoside,
 heightrounded]{geometry}
 
@@ -37,15 +38,15 @@ heightrounded]{geometry}
 \fancypagestyle{plain}{
 \fancyhf{}
 \fancyfoot[C]{}
-\renewcommand{\headrulewidth}{0pt}}
+\renewcommand{\headrulewidth}{0pt}
+}
 
-%Change section format:
-\setcounter{secnumdepth}{0} %Remove section numbering
+\setcounter{secnumdepth}{0}
 \usepackage{titlesec}
-\titleformat{\section} % Command to modify
-{\Large \normalfont \centering} % Format
-{} % No label (removes number)
-{0pt} % Spacing between label and title (irrelevant here since no label)
+\titleformat{\section}
+{\Large \normalfont \centering}
+{}
+{0pt}
 {}
 
 \titleformat{\subsection}
@@ -223,7 +224,7 @@ heightrounded]{geometry}
 
 %Drop Caps (And specifies a specific folder for normal lettrine images):
 \usepackage{lettrine}
-\newcommand{\lett}[2]{\lettrine[image=true,realheight=true,lines=2]{dropcaps/#1.png}{{\lowercase{#2}}}}
+\newcommand{\lett}[2]{\lettrine[image=true,realheight=true,lines=2]{dropcaps/#1.png}{{\uppercase{#2}}}}
 
 %If no second or third lines, and line amount might be doubtful, then this is used to ensure adequate spacing.
 \newcommand{\lettspace}[0]{\ifnum\prevgraf=1
@@ -453,7 +454,8 @@ heightrounded]{geometry}
 \fancyfoot[C]{}}
 \fancypagestyle{copyrightpagee}{\fancyhf{}
 \fancyhead[C]{}
-\fancyfoot[C]{}}
+\fancyfoot[C]{}
+}
 
 %URL
 \usepackage[hidelinks]{hyperref}
@@ -467,31 +469,28 @@ heightrounded]{geometry}
 \addcontentsline{toc}{chapter}{#1}
 \fancyhead[C]{{\large #1}}
 \renewcommand{\headrulewidth}{1pt}
-\renewcommand{\fancyheadoffset}{10pt}
 \afterpage{\fancyhead{}}
 }
 
+\newcommand{\lup}[1]{\centerline{#1}}
+
 \usepackage[no-math]{fontspec}
 \newcommand{\versiclefont}{Junicode}
-\newcommand{\textjuni}[1]{{\fontspec{\versiclefont}#1}}
+\newcommand{\textjuni}[1]{{\large\bf\fontspec{\versiclefont}#1}}
 \newcommand{\V}[1]{\textjuni{\char"2123} #1 \\}
 \newcommand{\R}[1]{\textjuni{\char"211F} \textbf{#1} \\}
 
+\newcommand{\inlineresp}[1]{\textbf{#1}}
+
 \begin{document}
 
-\include{pages/00-titlepage}
-\include{pages/00-copyright}
-\frontmatter
-\tableofcontents
-\clearpage
-\mainmatter
-\include{pages/01-preface}
-\include{pages/02-concerning-the-service-of-the-church}
-\include{pages/03-of-ceremonies}
-\include{pages/04-rules-to-order-the-service}
-\include{pages/05-order-psalter}
-\include{pages/06-order-scripture}
+\include{pages/00-0-titlepage}
+\include{pages/00-1-copyright}
+\include{pages/00-2-contents.tex}
 \include{pages/11-morning-prayer}
 \include{pages/12-evening-prayer}
+\include{pages/13-quicunque-vult}
+\include{pages/14-the-litany}
+\include{pages/15-prayers-and-thanksgivings}
 
 \end{document}
