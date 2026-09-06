@@ -96,9 +96,6 @@ heightrounded]{geometry}
 %For quotations in the Foreword and Editor's Preface:
 \usepackage{quoting}
 
-%For the signature in the Preface \& Margins
-\usepackage{ragged2e}
-
 %For the Chant Notation
 \usepackage[autocompile]{gregoriotex}
 %I'm not sure what this does.
@@ -126,327 +123,18 @@ heightrounded]{geometry}
 %Inline Rubric
 \newcommand{\inrub}[1]{{{\color{RubricRed}\small(#1)}}}
 
-%Determine Marginnote parameters
-\setlength{\marginparwidth}{15mm} % Set the width of the margin note
-\setlength{\marginparsep}{2mm} % Set the spacing between the margin note and the text
-\usepackage{marginnote}
-
-%Margin Rubric on Odd Pages
-
-\newcounter{alphacount} %Counter to convert number to letter
-\newcommand{\margrub}[2]{\setcounter{alphacount}{#1}\textsuperscript{\alph{alphacount}}%
-\marginpar{\begin{minipage}{0.65\marginparwidth}
-\sloppy%
-\itshape%
-\scriptsize%
-\textsuperscript{\alph{alphacount}}%
-#2
-\fussy
-\end{minipage}}
-\hspace{-0.2em}}
-
-
-%Margin Rubric on Even Pages
-\newcommand{\margrubleft}[2]{\setcounter{alphacount}{#1}\textsuperscript{\alph{alphacount}}%
-\marginpar{\RaggedLeft%
-\sloppy%
-\itshape%
-\scriptsize%
-\textsuperscript{\alph{alphacount}}%
-#2%
-\fussy}
-\hspace{-0.2em}}
-
-%Margin Rubric in Column Contexts (English Column)
-\newcommand{\margcolrub}[2]{\setcounter{alphacount}{#1}%
-\textsuperscript{\alph{alphacount}}%
-\Ifthispageodd{\reversemarginpar
-\marginpar{%
-\raggedright%
-\sloppy%
-\itshape%
-\scriptsize%
-\textsuperscript{\alph{alphacount}}%
-#2\hspace{-0.2em}%
-\fussy}
-}{\normalmarginpar
-\marginpar{%
-\raggedleft%
-\sloppy%
-\itshape%
-\scriptsize%
-\textsuperscript{\alph{alphacount}}%
-#2\hspace{-0.2em}%
-\fussy}}}
-
-%Really just a placeholder in case it becomes relevant later in the latin side of a double column:
-\newcommand{\marglatincolrub}[2]{\setcounter{alphacount}{#1}\textsuperscript{\alph{alphacount}}\hspace{-0.2em}}
-
-%Margin Rubric without letter/number.
-\newcommand{\margy}[1]{\marginpar{\RaggedRight%
-\sloppy%
-\itshape%
-\scriptsize%
-#1%
-\fussy}}
-
-%Margin Rubric without letter/number, on the left side (even numbered page).
-\newcommand{\margyleft}[1]{\marginpar{\RaggedLeft%
-\sloppy%
-\itshape%
-\scriptsize%
-#1%
-\fussy}}
-
-%Kalendar \& Lectionary
-\usepackage{tabularray}
-\DefTblrTemplate{caption}{default}{}     % Removes any caption (including "Table X:")
-\DefTblrTemplate{capcont}{default}{}     % Removes continuation caption on subsequent pages
-\DefTblrTemplate{contfoot-text}{default}{}  % Removes "Continued on next page" text
-\usepackage{array}
-\usepackage{longtable} %Allows lectionary cells to go over multiple pages
-\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
-\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
-
-%Lectionary Evensong
-\newcommand{\evensong}[1]{Evensong}
-
-%Scriptural Citations in Mass
-\newcommand{\vr}[1]{{\footnotesize{ {\color{RubricRed}(#1)}}}}
-
-%Disable \vr
-\newcommand{\novr}[1]{}
-
-%Invitatory
-\newcommand{\inv}[1]{{\color{RubricRed}#1.}}
-
-%Propers:
-
 %Drop Caps (And specifies a specific folder for normal lettrine images):
 \usepackage{lettrine}
 \newcommand{\lett}[2]{\lettrine[image=true,realheight=true,lines=2]{dropcaps/#1.png}{{\uppercase{#2}}}}
 
-%If no second or third lines, and line amount might be doubtful, then this is used to ensure adequate spacing.
-\newcommand{\lettspace}[0]{\ifnum\prevgraf=1
-\vspace{2\baselineskip}
-\else
-\ifnum\prevgraf=2
-\vspace{1\baselineskip}
-\fi
-\fi}
-
-%Ensure that short paragraphs don't lead to text moving into drop cap.
-
-\newcounter{thirdlinecounter} %Counter to tell thirdline how many paragraphs precede it.
-\newcommand{\secondline}[1]{%
-\ifnum\prevgraf>2 %If there are over two lines in the previous paragraph (3), then we don't need to adjust anything, and it is put as is.
-#1\par
-\setcounter{thirdlinecounter}{3}
-\else
-\ifnum\prevgraf=2%If there are only two lines, then we only need to do an indent.
-\parindent=3.25em
-#1\par
-\parindent=1em%Reset indent to normal
-\setcounter{thirdlinecounter}{2}
-\else
-\ifnum\prevgraf=1%If the lett paragraph is only one line, then we need to cause the entirety of the next paragraph to be indented.
-\noindent
-\leftskip=3.25em
-#1\par
-\leftskip=0em%Reset indent to normal
-\setcounter{thirdlinecounter}{1}
-\else%In case something is not caught.
-#1
-\setcounter{thirdlinecounter}{3}
-\par
-\fi
-\fi
-\fi}
-
-%Make sure proper formatting for the third line.
-\newcommand{\thirdline}[1]{\addtocounter{thirdlinecounter}{\prevgraf}%
-\ifnum\thethirdlinecounter=2%If there are only two lines preceding (one line of the lett and one line of the secondline
-\parindent=3.25em
-#1\par
-\parindent=1em
-\else
-#1\par
-\fi}
-
-\usepackage[super]{nth} %To add superscript to ordinal numeral.
-
-%To indicate Seasons in the Proper of Season:
-
-\newcommand{\seasonSection}[1]{\section{#1}}
-
-%Heading for each individual day in the Proper of Season
-
-\newcommand{\seasonSubsection}[3]{\subsection{{\color{#3}#2}}
-\begin{inhead}
-#1
-\end{inhead}}
-
-%For Proper of Season days with dates
-\newcommand{\seasonalFestival}[4]{\subsection{{\color{#4}#2. #3}}
-\begin{inhead}
-#1
-\end{inhead}}
-
-%Special Proper of Season without inhead nor date
-\newcommand{\seasonalFestivalNoHead}[2]{\subsection{{\color{#2}#1}}}
-
-%Special Proper of Season without inhead nor date
-\newcommand{\seasonalFestivalDateNoHead}[3]{\subsection{{\color{#3}#1. #2}}}
-
-%Rank, Date, Name for Feast Days
-\newcommand{\festival}[4]{\par\subsection{{\color{#4}#2. #3}}
-
-\begin{inhead}
-#1
-\end{inhead}}
-
-%Headings for the Propers
-\newcommand{\feastday}[1]{\fancyhead[RO,LE]{\textit{#1}}} %Feast Name
-
-\newcommand{\feastdate}[2]{\fancyhead[RE,LO]{#1 #2}} %Feast Date
-
-%Psalm Numbers
-\newcommand{\psanum}[1]{{\small{#1}} }
-
-%For drawing boxes around unapproved text:
-\usepackage[most]{tcolorbox}
-
 %To make sure versicle and response start with indent.
 \usepackage{indentfirst}
 
-%To create hanging indent for Hymns.
-\usepackage{hanging}
-
-%Introit
-\newcommand{\introit}[0]{\subsubsection{Introit}}
-
-%Collect
-\newcommand{\collect}[0]{\subsubsection{Collect}}
-
-%Readings
-\newcommand{\readingcitation}[2]{\subsubsection{#1. \emph{#2}}}
-
-%Holy Week Prophecies
-\newcommand{\HWreadingcitation}[2]{\subsection{#1. \emph{#2}}}
-
-%Divine Name in Readings
-\newcommand{\divineName}[1]{\textsc{\lowercase{#1}}}
-
-%Gradual \& Alleluia
-\newcommand{\gradall}[2]{\gradual{#1}\par\alleluia{#2}}
-
-%Gradual \& Tract
-\newcommand{\gradtr}[2]{\gradual{#1}\par\tract{#2}}
-
-%Alleluia Verse
-\newcommand{\alleluia}[1]{\vspace{1ex}\par\noindent
-\emph{Alleluia.} #1}
-%Gradual
-\newcommand{\gradual}[1]{\vspace{1ex}\par\noindent
-\emph{Gradual.} #1}
-
-%Tract
-\newcommand{\tract}[1]{\vspace{1ex}\par\noindent
-\emph{Tract.} #1}
-
-%Offertory
-\newcommand{\offertory}[1]{\vspace{1ex}\par\noindent
-\emph{Offertory.} #1}
-
-%Secret
-\newcommand{\secret}[0]{\subsubsection{Secret}}
-
-%Communion
-\newcommand{\communion}[1]{\vspace{1ex}\par\noindent
-\emph{Communion.} #1}
-
-%Postcommunion
-\newcommand{\postcommunion}[0]{\subsubsection{Postcommunion}}
-
-%Antiphons
-\newcommand{\antiphon}[2]{{\centering \textit{#1 Ant.} #2}}
-
-\usepackage{paracol} %To provide balanced English-Latin dual paragraphs
 \usepackage[grid]{multicol} %For non bilingual dual columns.
 \setlength\columnseprule{0.4pt} %Controls the width of the line between columns
 
 %Prevent lettrine misalignment:
 \raggedbottom
-
-%English-Latin Double Column
-\newcommand{\elcol}[2]{\sloppy
-\begin{paracol}{2}
-\begin{leftcolumn}
-#1
-\end{leftcolumn}
-\begin{rightcolumn}
-\selectlanguage{ecclesiasticallatin}%
-#2
-\end{rightcolumn}
-\switchcolumn*
-\end{paracol}
-\selectlanguage{british}
-\fussy}
-
-%English-Latin Non-Indented Column
-\newcommand{\elcoldent}[2]{\sloppy
-\begin{paracol}{2}
-\begin{leftcolumn}
-\noindent%
-#1
-\end{leftcolumn}
-\begin{rightcolumn}
-\selectlanguage{ecclesiasticallatin}%
-\noindent
-#2
-\end{rightcolumn}
-\switchcolumn*
-\end{paracol}
-\selectlanguage{british}
-\fussy}
-
-%For difference between through the year and in eastertide:
-\newcommand{\ttyie}[2]{\sloppy
-\begin{paracol}{2}
-\begin{leftcolumn}\noindent
-#1
-\end{leftcolumn}
-\begin{rightcolumn}\noindent
-#2
-\end{rightcolumn}
-\switchcolumn*
-\end{paracol}
-\selectlanguage{british}
-\fussy}
-
-%Expedites adding dual language Oremus/Let Us Pray
-\newcommand{\oremus}[0]{\par
-\begin{paracol}{2}
-\begin{leftcolumn}
-\selectlanguage{british}\noindent%
-\centerline{\textit{Let us pray.}}
-\end{leftcolumn}
-\begin{rightcolumn}
-\selectlanguage{ecclesiasticallatin}\noindent%
-\centerline{\textit{Orémus.}}
-\end{rightcolumn}
-\switchcolumn*
-\end{paracol}
-\selectlanguage{british}}
-
-%Does the same as above, but for single language collects:
-\newcommand{\letuspray}[0]{\par\noindent
-\centerline{\textit{Let us pray.}}
-\par}
-
-\newcommand{\oremuslatin}[0]{\par\noindent
-\centerline{\textit{Orémus.}}
-\par}
 
 %Copyright page settings
 \fancypagestyle{copyrightpage}{\fancyhf{}
@@ -473,12 +161,13 @@ heightrounded]{geometry}
 }
 
 \newcommand{\lup}[1]{\centerline{#1}}
+\newcommand{\cross}[0]{\ding{64}}
 
 \usepackage[no-math]{fontspec}
 \newcommand{\versiclefont}{Junicode}
 \newcommand{\textjuni}[1]{{\large\bf\fontspec{\versiclefont}#1}}
-\newcommand{\V}[1]{\textjuni{\char"2123} #1 \\}
-\newcommand{\R}[1]{\textjuni{\char"211F} \textbf{#1} \\}
+\newcommand{\V}[1]{\textjuni{\char"2123} #1\\}
+\newcommand{\R}[1]{\textjuni{\char"211F} #1\\}
 
 \newcommand{\inlineresp}[1]{\textbf{#1}}
 
@@ -503,6 +192,7 @@ heightrounded]{geometry}
 \include{pages/14-the-litany}
 \include{pages/15-prayers-and-thanksgivings}
 \include{pages/16-collects}
+\include{pages/17-holy-communion}
 \include{pages/29-psalter}
 \include{pages/33-articles-of-religion}
 
