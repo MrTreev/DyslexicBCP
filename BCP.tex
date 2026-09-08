@@ -9,13 +9,14 @@ headheight=15pt,
 twoside,
 heightrounded]{geometry}
 
+\usepackage{parskip}
 \usepackage{fontspec}
 \setmainfont{OpenDyslexic3}
 
 %Basic English formatting:
 \frenchspacing %Prevents the silly double space after each sentence
 \usepackage{pifont} %Needed for \ding characters (for the crosses mainly)
-\setlength{\parindent}{1em}
+\setlength{\parindent}{0pt}
 
 %To ensure language compatibility.
 \usepackage[utf8]{inputenc}
@@ -195,8 +196,9 @@ heightrounded]{geometry}
 \include{pages/17-holy-communion}
 \include{pages/29-psalter}
 \include{pages/33-articles-of-religion}
-\include{pages/90-preparation.tex}
-\include{pages/91-prime.tex}
-\include{pages/92-compline.tex}
+\include{pages/90-preparation}
+\include{pages/91-prime}
+\include{pages/92-compline}
+\include{pages/93-marian-anthems}
 
 \end{document}
