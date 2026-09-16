@@ -22,7 +22,7 @@ BCPDEPS	+=	${DROPCAPS}
 BCP.pdf: ${BCPDEPS} BCP.tex
 	Rscript build.r BCP.tex
 
-BCP-a5.pdf: BCP-flat-ps.pdf
+BCP-a5.pdf: BCP.pdf
 	pdfposter -mA5 $< $@
 
 BCP-flat-cairo.pdf: BCP.pdf
