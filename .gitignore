@@ -1,6 +1,6 @@
 /reference/
-BCP.log
-BCP.toc
-BCP.aux
-BCP.pdf
+BCP*.log
+BCP*.toc
+BCP*.aux
+BCP*.pdf
 **/*.aux
