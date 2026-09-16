@@ -19,7 +19,6 @@ heightrounded]{geometry}
 \setlength{\parindent}{0pt}
 
 %To ensure language compatibility.
-\usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
 
 %To change tracking and tighten up spacing:
@@ -33,7 +32,7 @@ heightrounded]{geometry}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\renewcommand{\headrulewidth}{1pt} %Prevent line at top of page
+\renewcommand{\headrulewidth}{1pt}
 \fancyfoot[C]{\thepage}
 %Prevents chapter from resetting page layout
 \fancypagestyle{plain}{
@@ -141,7 +140,7 @@ heightrounded]{geometry}
 \fancypagestyle{copyrightpage}{\fancyhf{}
 \fancyhead[C]{{\LARGE Copyright}}
 \fancyfoot[C]{}}
-\fancypagestyle{copyrightpagee}{\fancyhf{}
+\fancypagestyle{copyrightpage}{\fancyhf{}
 \fancyhead[C]{}
 \fancyfoot[C]{}
 }
@@ -164,7 +163,6 @@ heightrounded]{geometry}
 \newcommand{\lup}[1]{\centerline{#1}}
 \newcommand{\cross}[0]{\ding{64}}
 
-\usepackage[no-math]{fontspec}
 \newcommand{\versiclefont}{Junicode}
 \newcommand{\textjuni}[1]{{\large\bf\fontspec{\versiclefont}#1}}
 \newcommand{\V}[1]{\textjuni{\char"2123} #1\\}
