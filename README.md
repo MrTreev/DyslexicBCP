@@ -2,7 +2,7 @@
 
 Dyslexic Friendly Book of Common Prayer
 
-From the 1662 BCP, with additional collects added from the 1928 Proposed BCP.
+From the 1662 BCP, with additional collects added from the 1928 Proposed BCP and The Book of English Collects.
 
 Using the Dyslexia-Friendly font [OpenDyslexic3](https://opendyslexic.org).
 
