@@ -12,8 +12,8 @@ BCPDEPS	+=	$(wildcard pages/*.tex)
 BCPDEPS	+=	$(wildcard pages/parts/*.tex)
 BCPDEPS	+=	OpenDyslexic3.fontspec
 BCPDEPS	+=	${DROPCAPS}
-BCP.pdf: ${BCPDEPS} BCP.tex
-	Rscript build.r BCP.tex
+BCP.pdf: BCP.tex ${BCPDEPS}
+	Rscript build.r $< $@
 
 BCP-a5.pdf: BCP.pdf
 	pdfposter -mA5 $< $@
