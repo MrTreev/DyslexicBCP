@@ -2,9 +2,9 @@
 \usepackage{resources/preamble}
 \usepackage[toc]{multitoc}
 
-\newcommand{\biblebook}[1]{
+\newcommand{\biblebook}[2]{
 \phantomsection
-\addcontentsline{toc}{chapter}{#1}
+\addcontentsline{toc}{chapter}{#2}
 \fancyhead[C]{{\large #1}}
 \renewcommand{\headrulewidth}{1pt}
 \afterpage{\fancyhead{}}
@@ -18,6 +18,11 @@
 \newcommand{\bibleverse}[2]{
 {\color{VerseCol}\textsuperscript{#1}}#2
 }
+
+\newcommand{\transnote}[2]{
+\footnote{#1. #2}
+}
+
 \babelprovide[import]{polytonicgreek}
 \newfontlanguage{Polutoniko}{PGR}
 \babelfont[greek]{rm}[Language=Default]{FreeSerif}
