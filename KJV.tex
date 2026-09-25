@@ -1,5 +1,6 @@
 \documentclass[8pt]{book}
 \usepackage{resources/preamble}
+\usepackage[toc]{multitoc}
 
 \newcommand{\biblebook}[1]{
 \phantomsection
@@ -17,10 +18,19 @@
 \newcommand{\bibleverse}[2]{
 {\color{VerseCol}\textsuperscript{#1}}#2
 }
-\nonfrenchspacing
+\babelprovide[import]{polytonicgreek}
+\newfontlanguage{Polutoniko}{PGR}
+\babelfont[greek]{rm}[Language=Default]{FreeSerif}
 
 \begin{document}
 
+\include{kjv/00-0-titlepage}
+\frontmatter
+\include{kjv/00-contents}
+\include{kjv/00-dedication}
+\include{kjv/00-translators-note}
+\mainmatter
+\part{Old Testament}
 \include{kjv/01-Ge}
 \include{kjv/02-Exo}
 \include{kjv/03-Lev}
@@ -60,6 +70,7 @@
 \include{kjv/37-Hag}
 \include{kjv/38-Zec}
 \include{kjv/39-Mal}
+\part{Apocrypha}
 \include{kjv/67-Tob}
 \include{kjv/68-Jdt}
 \include{kjv/70-Wis}
@@ -73,6 +84,7 @@
 \include{kjv/78-1Esd}
 \include{kjv/79-Man}
 \include{kjv/80-2Esd}
+\part{New Testament}
 \include{kjv/40-Mat}
 \include{kjv/41-Mark}
 \include{kjv/42-Luke}
