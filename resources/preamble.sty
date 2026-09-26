@@ -61,8 +61,6 @@ heightrounded]{geometry}
 {0pt}
 {}
 
-%Colour \& Images
-
 %Image Configuration
 \usepackage{graphicx}
 \usepackage{wrapfig}
@@ -77,16 +75,6 @@ heightrounded]{geometry}
 %Colour
 \usepackage[svgnames,dvipsnames]{xcolor}
 
-%Liturgical Colours:
-\definecolor{SarumBlue}{cmyk}{0.95, 0.74, 0.07, 0.44}
-\definecolor{LentenViolet}{cmyk}{0.36, 0.65, 0, 0.5}
-\definecolor{GreenSeason}{cmyk}{0.73, 0.40, 0.73, 0.27}
-%\definecolor{FestiveWhite}{cmyk}{0.30, 0.40, 0.9, 0.25}
-\definecolor{FestiveWhite}{cmyk}{0, 0.22, 0.79, 0.13}
-\definecolor{MartyrRed}{cmyk}{0, 0.6, 0.6, 0.55}
-\definecolor{MournfulBlack}{cmyk}{0.4, 0.3, 0.3, 1}
-\definecolor{JoyfulRose}{cmyk}{0.27, 0.74, 0.59, 0.25}
-
 %Changes to the Table of Contents
 \addto\captionsbritish{\renewcommand{\contentsname}{Table of Contents}}
 \setcounter{tocdepth}{1} %Only chapters & sections are added to the TOC
@@ -95,33 +83,6 @@ heightrounded]{geometry}
 
 %For quotations in the Foreword and Editor's Preface:
 \usepackage{quoting}
-
-%For the Chant Notation
-\usepackage[autocompile]{gregoriotex}
-%I'm not sure what this does.
-\gresetheadercapture{initial-style}{gresetinitiallines}{}
-
-%Rubrics:
-%Colour for print:
-\definecolor{RubricRed}{cmyk}{0, 1, 1, 0.4}
-
-%For black words in rubrics.
-\newcommand{\blackrubric}[1]{{\color{black}#1}}
-
-%Heading Rubrics
-\newenvironment{inhead}{\par\centering\color{RubricRed}\small\smallskip\ignorespaces}
-{\par\normalsize\smallskip\ignorespacesafterend}
-
-%Normal Rubrics
-\newenvironment{rubric}{\par\smallskip\par\noindent\color{RubricRed}\small\ignorespaces\P}
-{\par\normalsize\smallskip\ignorespacesafterend}
-
-%For rubrics right after sections
-\newenvironment{secrubric}{\par\noindent\small\ignorespaces\color{RubricRed}\P}
-{\par\normalsize\smallskip\ignorespacesafterend}
-
-%Inline Rubric
-\newcommand{\inrub}[1]{{{\color{RubricRed}\small(#1)}}}
 
 %Drop Caps (And specifies a specific folder for normal lettrine images):
 \usepackage{lettrine}
@@ -151,32 +112,3 @@ heightrounded]{geometry}
 
 %Chapter starts
 \usepackage{afterpage}
-
-\newcommand{\bcpchapter}[1]{
-\phantomsection
-\addcontentsline{toc}{chapter}{#1}
-\fancyhead[C]{{\large #1}}
-\renewcommand{\headrulewidth}{1pt}
-\afterpage{\fancyhead{}}
-}
-
-\newcommand{\lup}[1]{\centerline{#1}}
-\newcommand{\cross}[0]{\ding{64}}
-
-\newcommand{\versiclefont}{Junicode}
-\newcommand{\textjuni}[1]{{\large\bf\fontspec{\versiclefont}#1}}
-\newcommand{\V}[1]{\textjuni{\char"2123} #1\\}
-\newcommand{\R}[1]{\textjuni{\char"211F} #1\\}
-
-\newcommand{\changeable}[1]{\textbf{#1}}
-
-\newcommand{\inlineresp}[1]{\textbf{#1}}
-
-\newcommand{\psalmtitle}[2]{
-\subsection{Psalm #1.\\
-\small#2}
-}
-
-\newcommand{\psalmverse}[2]{
-  #1 : #2
-}
