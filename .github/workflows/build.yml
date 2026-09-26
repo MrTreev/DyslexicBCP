@@ -27,7 +27,7 @@ jobs:
       run: make
     - name: Get Date
       id: get-date-time
-      run: echo "MYDATETIME=$(date --iso-8601=seconds)" >> "$GITHUB_OUTPUT"
+      run: echo "MYDATETIME=$(date --iso-8601=seconds | tr ':' '-')" >> "$GITHUB_OUTPUT"
     - name: Release
       uses: softprops/action-gh-release@v3
       env:
