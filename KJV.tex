@@ -3,6 +3,7 @@
 \usepackage{etoolbox}
 \usepackage[symbol*,perpage]{footmisc}
 \usepackage[toc]{multitoc}
+\usepackage{setspace}
 
 \newcommand{\biblebook}[2]{
 \phantomsection
@@ -12,17 +13,17 @@
 \afterpage{\fancyhead{}}
 }
 
-\newcommand{\biblechapter}[1]{
-\subsection{Chapter #1}
+\newcommand{\biblechapter}[1]{%
+\subsection{Chapter #1}%
 }
 
 \definecolor{VerseCol}{cmyk}{0, 1, 1, 0.4}
-\newcommand{\bibleverse}[2]{
-{\color{VerseCol}\textsuperscript{#1}}#2
+\newcommand{\bibleverse}[2]{%
+{\color{VerseCol}\small\textsuperscript{#1}}{#2}%
 }
 
-\newcommand{\transnote}[2]{
-\footnote{#1. #2}
+\newcommand{\transnote}[2]{%
+\footnote{#1. #2}%
 }
 
 % Add greek language and font
@@ -37,7 +38,6 @@
 \makeatother
 
 \begin{document}
-
 \include{kjv/00-0-titlepage}
 \frontmatter
 \include{kjv/00-contents}
