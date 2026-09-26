@@ -9,6 +9,8 @@ resources/fonts/.intermediate: resources/scripts/glyph2dropcap.py
 		resources/images/dropcaps
 
 PDFDEPS	+=	OpenDyslexic3.fontspec
+PDFDEPS	+=	resources/fonts/OpenDyslexic3-Regular.ttf
+PDFDEPS	+=	resources/fonts/OpenDyslexic3-Bold.ttf
 PDFDEPS	+=	resources/preamble.sty
 PDFDEPS	+=	${DROPCAPS}
 

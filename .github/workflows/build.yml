@@ -1,0 +1,42 @@
+name: Build Documents
+on:
+  push:
+    branches: [ $default-branch ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install Dependencies
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: fontforge librsvg2-bin
+        version: 1.0
+    - name: Install Python3
+      uses: actions/setup-python@v7
+      with:
+        python-version: '3.13'
+    - name: Install R
+      uses: r-lib/actions/setup-r@v2
+    - name: Install R packages
+      run: R -e "install.packages('tinytex')"
+    - name: Install TinyTex
+      uses: r-lib/actions/setup-tinytex@v2
+    - name: Checkout Repo
+      uses: actions/checkout@v4
+    - name: Build documents
+      run: make
+    - name: Get Date
+      id: get-date-time
+      run: echo "MYDATETIME=$(date --iso-8601=seconds)" >> "$GITHUB_OUTPUT"
+    - name: Release
+      uses: softprops/action-gh-release@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ci-${{ steps.get-date-time.outputs.MYDATETIME }}
+        release_name: Release ${{ steps.get-date-time.outputs.MYDATETIME }}
+        draft: false
+        prerelease: true
+        files: |
+          BCP.pdf
+          KJV.pdf

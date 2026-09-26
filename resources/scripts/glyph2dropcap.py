@@ -10,5 +10,8 @@ export_chars = {"A", "AE", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K",
 os.makedirs(outdir, exist_ok=True)
 for glyph in font:
     if font[glyph].glyphname in export_chars:
-        outfile = f"{outdir}/{font[glyph].glyphname}.png"
-        font[glyph].export(outfile, pixelsize=500)
+        name = font[glyph].glyphname
+        svg = os.path.join(outdir, name + ".svg")
+        png = os.path.join(outdir, name + ".png")
+        font[glyph].export(svg)
+        os.system(f'rsvg-convert -h 500 -o "{png}" "{svg}" && rm -f "{svg}"')
