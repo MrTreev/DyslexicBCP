@@ -1,4 +1,4 @@
-\documentclass[8pt]{book}
+\documentclass{book}
 \usepackage{resources/preamble}
 \usepackage{etoolbox}
 \usepackage[symbol*,perpage]{footmisc}
@@ -8,9 +8,14 @@
 \newcommand{\biblebook}[2]{
 \phantomsection
 \addcontentsline{toc}{chapter}{#2}
-\fancyhead[C]{{\large #1}}
+\begin{center}
+{\Huge\scshape #1\par}
+\vspace{0.4em}
+\rule{0.45\textwidth}{0.4pt}
+\end{center}
+\vspace{0.8em}
+\fancyhead[C]{{\large #2}}
 \renewcommand{\headrulewidth}{1pt}
-\afterpage{\fancyhead{}}
 }
 
 \newcommand{\biblechapter}[1]{%
@@ -87,18 +92,18 @@
 \part{Apocrypha}
 \include{kjv/67-Tob}
 \include{kjv/68-Jdt}
-\include{kjv/70-Wis}
-\include{kjv/71-Sir}
-\include{kjv/72-Bar}
-\include{kjv/73-Azar}
-\include{kjv/74-Sus}
-\include{kjv/75-Bel}
-\include{kjv/76-1Mac}
-\include{kjv/77-2Mac}
-\include{kjv/78-1Esd}
-\include{kjv/79-2Esd}
-\include{kjv/80-Man}
-\include{kjv/81-AddEst}
+\include{kjv/69-Wis}
+\include{kjv/70-Sir}
+\include{kjv/71-Bar}
+\include{kjv/72-Azar}
+\include{kjv/73-Sus}
+\include{kjv/74-Bel}
+\include{kjv/75-1Mac}
+\include{kjv/76-2Mac}
+\include{kjv/77-1Esd}
+\include{kjv/78-2Esd}
+\include{kjv/79-Man}
+\include{kjv/80-AddEst}
 \part{New Testament}
 \include{kjv/40-Mat}
 \include{kjv/41-Mark}
