@@ -1,7 +1,8 @@
 \documentclass[8pt]{book}
 \usepackage{resources/preamble}
+\usepackage{etoolbox}
+\usepackage[symbol*,perpage]{footmisc}
 \usepackage[toc]{multitoc}
-\usepackage[perpage]{footmisc}
 
 \newcommand{\biblebook}[2]{
 \phantomsection
@@ -24,9 +25,16 @@
 \footnote{#1. #2}
 }
 
+% Add greek language and font
 \babelprovide[import]{polytonicgreek}
 \newfontlanguage{Polutoniko}{PGR}
 \babelfont[greek]{rm}[Language=Default]{FreeSerif}
+
+% Set font for footnote symbols
+\makeatletter
+\def\@makefnmark{\hbox{\@textsuperscript{\normalfont\@thefnmark}}}
+\patchcmd{\@makefnmark}{\normalfont}{\fontspec{FreeSerif}\selectfont}{}{}
+\makeatother
 
 \begin{document}
 
