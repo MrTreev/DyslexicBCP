@@ -1,12 +1,4 @@
-\usepackage[a4paper,
-bindingoffset=10mm,
-inner=20mm,
-outer=20mm,
-top=20mm,
-bottom=20mm,
-headheight=15pt,
-twoside,
-heightrounded]{geometry}
+\usepackage[]{geometry}
 
 \usepackage{parskip}
 \usepackage{fontspec}
@@ -26,7 +18,7 @@ heightrounded]{geometry}
 
 %Makes sure odd pages are on the right when moving between page number types.
 \usepackage[strict]{changepage}
-\usepackage{scrextend}
+\usepackage[]{scrextend}
 
 %Page Headers
 \usepackage{fancyhdr}
@@ -36,6 +28,11 @@ heightrounded]{geometry}
 \fancyfoot[C]{\thepage}
 %Prevents chapter from resetting page layout
 \fancypagestyle{plain}{
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+}
+\fancypagestyle{empty}{
 \fancyhf{}
 \fancyfoot[C]{}
 \renewcommand{\headrulewidth}{0pt}

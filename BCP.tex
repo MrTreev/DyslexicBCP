@@ -1,4 +1,14 @@
-\documentclass[8pt]{book}
+\documentclass[9pt]{book}
+\usepackage[a5paper,
+bindingoffset=5mm,
+inner=15mm,
+outer=15mm,
+top=15mm,
+bottom=10mm,
+headheight=7pt,
+twoside,
+heightrounded]{geometry}
+\usepackage[fontsize=9pt]{scrextend}
 \usepackage{resources/preamble}
 
 %Liturgical Colours:
@@ -40,6 +50,13 @@
 \phantomsection
 \addcontentsline{toc}{chapter}{#1}
 \fancyhead[C]{{\large #1}}
+\thispagestyle{plain}
+\begin{center}
+{\huge\scshape #1\par}
+\vspace{0.2em}
+\rule{0.45\textwidth}{0.4pt}
+\end{center}
+\vspace{0.8em}
 \renewcommand{\headrulewidth}{1pt}
 \afterpage{\fancyhead{}}
 }
