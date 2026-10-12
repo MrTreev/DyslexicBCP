@@ -62,8 +62,7 @@ for glyph in font:
     cy = (bb[1] + bb[3]) / 2
     g.transform(psMat.translate(-cx, -cy))
     g.transform(psMat.scale(scale))
-    split = font.ascent - font.descent
-    g.transform(psMat.translate(font.ascent / 2, split / 2))
+    g.transform(psMat.translate(0, font.ascent - (bb[3] - cy) * scale))
 
     name = g.glyphname
     svg = os.path.join(outdir, name + ".svg")
