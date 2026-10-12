@@ -61,6 +61,21 @@ heightrounded]{geometry}
 \afterpage{\fancyhead{}}
 }
 
+\newcommand{\bcpchapters}[2]{
+\phantomsection
+\addcontentsline{toc}{chapter}{#2}
+\fancyhead[C]{{\large #1}}
+\thispagestyle{plain}
+\begin{center}
+{\huge\scshape #2\par}
+\vspace{0.2em}
+\rule{0.45\textwidth}{0.4pt}
+\end{center}
+\vspace{0.8em}
+\renewcommand{\headrulewidth}{1pt}
+\afterpage{\fancyhead{}}
+}
+
 \newcommand{\lup}[1]{\centerline{#1}}
 \newcommand{\cross}[0]{\ding{64}}
 
@@ -76,6 +91,10 @@ heightrounded]{geometry}
 \newcommand{\psalmtitle}[2]{
 \subsection{Psalm #1.\\
 \small#2}
+}
+
+\newcommand{\psalmsection}[1]{
+\subsubsection{\small#1}
 }
 
 \newcommand{\psalmverse}[2]{
