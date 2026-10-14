@@ -76,6 +76,30 @@ heightrounded]{geometry}
 \afterpage{\fancyhead{}}
 }
 
+\newsavebox{\leftbarbox}
+\newlength{\leftbarwidth}
+\setlength{\leftbarwidth}{0.8pt}
+\newlength{\leftbarsep}
+\setlength{\leftbarsep}{0.4em}
+
+\newenvironment{leftbar}{%
+  \par\addvspace{\smallskipamount}%
+  \begin{lrbox}{\leftbarbox}%
+    \begin{minipage}{\linewidth}%
+}{%
+    \end{minipage}%
+  \end{lrbox}%
+  \noindent
+  \makebox[0pt][r]{%
+    \raisebox{-\dp\leftbarbox}{%
+      \rule{\leftbarwidth}{\dimexpr\ht\leftbarbox+\dp\leftbarbox\relax}%
+    }%
+    \hspace{\leftbarsep}%
+  }%
+  \usebox{\leftbarbox}%
+  \par\addvspace{\smallskipamount}%
+}
+
 \newcommand{\lup}[1]{\centerline{#1}}
 \newcommand{\cross}[0]{\ding{64} }
 
@@ -164,6 +188,7 @@ heightrounded]{geometry}
 \include{bcp/15-prayers-and-thanksgivings}
 \include{bcp/16-collects}
 \include{bcp/17-holy-communion}
+\include{bcp/18-baptism-public-and-private}
 \include{bcp/29-psalter}
 \include{bcp/33-articles-of-religion}
 \include{bcp/90-preparation}
