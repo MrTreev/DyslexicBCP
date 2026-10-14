@@ -81,12 +81,46 @@ heightrounded]{geometry}
 
 \newcommand{\versiclefont}{Junicode}
 \newcommand{\textjuni}[1]{{\large\bf\fontspec{\versiclefont}#1}}
-\newcommand{\V}[1]{\textjuni{\char"2123} #1\\}
-\newcommand{\R}[1]{\textjuni{\char"211F} #1\\}
+
+\newlength{\vrwidth}
+\settowidth{\vrwidth}{\textjuni{\char"2123}}
+\addtolength{\vrwidth}{0.4em}
+
+\newif\ifinvr
+\invrfalse
+\newcommand{\vrclose}{%
+  \ifinvr\addvspace{\smallskipamount}\invrfalse\fi
+}
+\everypar\expandafter{\the\everypar\vrclose}
+
+\newcommand{\V}[1]{%
+  \par
+  \ifinvr\else\addvspace{\smallskipamount}\fi
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \noindent
+  \hangindent=\vrwidth
+  \hangafter=1
+  \makebox[\vrwidth][l]{\textjuni{\char"2123}}%
+  \invrtrue
+  #1\par
+  \endgroup
+}
+\newcommand{\R}[1]{%
+  \begingroup
+  \setlength{\parskip}{0pt}%
+  \noindent
+  \hangindent=\vrwidth
+  \hangafter=1
+  \makebox[\vrwidth][l]{\textjuni{\char"211F}}%
+  \invrtrue
+  #1\par
+  \endgroup
+}
 
 \newcommand{\changeable}[1]{\textbf{#1}}
 
-\newcommand{\inlineresp}[1]{\textbf{#1}}
+\newcommand{\inlineresp}[1]{\color{black}\textbf{#1}}
 
 \newcommand{\newcollect}[1]{
 \subsection{#1}
@@ -135,6 +169,7 @@ heightrounded]{geometry}
 \include{bcp/90-preparation}
 \include{bcp/91-prime}
 \include{bcp/92-compline}
+\include{bcp/93-confession-before-morning-or-evening-prayer}
 \include{bcp/99-marian-anthems}
 
 \end{document}
