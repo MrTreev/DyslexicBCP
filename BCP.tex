@@ -61,6 +61,22 @@ heightrounded]{geometry}
 \afterpage{\fancyhead{}}
 }
 
+\newcommand{\bcpchaptersub}[2]{
+\phantomsection
+\addcontentsline{toc}{chapter}{#1}
+\fancyhead[C]{{\large #1}}
+\thispagestyle{plain}
+\begin{center}
+{\huge\scshape #1\par}
+{\Large\scshape #2\par}
+\vspace{0.2em}
+\rule{0.45\textwidth}{0.4pt}
+\end{center}
+\vspace{0.8em}
+\renewcommand{\headrulewidth}{1pt}
+\afterpage{\fancyhead{}}
+}
+
 \newcommand{\bcpchapters}[2]{
 \phantomsection
 \addcontentsline{toc}{chapter}{#2}
@@ -191,6 +207,7 @@ heightrounded]{geometry}
 \include{bcp/18-baptism-public-infants}
 \include{bcp/19-baptism-private-children}
 \include{bcp/20-baptism-public-riper-years}
+\include{bcp/21-a-catechism}
 \include{bcp/29-psalter}
 \include{bcp/33-articles-of-religion}
 \include{bcp/90-preparation}
