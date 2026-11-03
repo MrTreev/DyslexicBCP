@@ -19,6 +19,7 @@ heightrounded]{geometry}
 \definecolor{MartyrRed}{cmyk}{0, 0.6, 0.6, 0.55}
 \definecolor{MournfulBlack}{cmyk}{0.4, 0.3, 0.3, 1}
 \definecolor{JoyfulRose}{cmyk}{0.27, 0.74, 0.59, 0.25}
+\definecolor{RedLetter}{cmyk}{0, 1, 1, 0.4}
 %Colour for print:
 \definecolor{RubricRed}{cmyk}{0, 1, 1, 0.4}
 
@@ -166,8 +167,17 @@ heightrounded]{geometry}
 \subsection{#1}
 }
 
+\newcommand{\redletterday}[1]{
+\subsection{{\color{RedLetter}#1}}
+}
+
 \newcommand{\datedcollect}[2]{
 \subsection{#2\\
+#1}
+}
+
+\newcommand{\redletterdated}[2]{
+\subsection{{\color{RedLetter}#2}\\
 #1}
 }
 
